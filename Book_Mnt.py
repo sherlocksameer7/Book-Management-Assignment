@@ -106,19 +106,12 @@ def search():
 @Books.route('/up', methods=['GET', 'POST'])
 def update_search():
     global getBookname
-    cursor = Connection.cursor()
+    Connection.cursor()
     if request.method == "POST":
         getBookname = request.form["bname"]
-        count = cursor.execute("Select * from MyBook Where Name='"+getBookname+"'")
-        result = cursor.fetchall()
-        if result is None:
-            print("Book Name Not Exist")
-        else:
+        return redirect('/update')
 
-            return render_template("update_search.html", search=result, status=True)
-    else:
-
-        return render_template("update_search.html", search=[], status=False)
+    return render_template("update_search.html")
 
     #     return redirect('/update')
     #
