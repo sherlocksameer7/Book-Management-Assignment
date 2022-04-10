@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center bg-warning"><h2>Update Book</h2></div>
+<div class="container">
+    <div class="row">
+          <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <form action="/up" method="post">
+                <table class="table">
+                    <tr>
+                        <td>Book Name</td>
+                        <td><input type="text" name="bname" class="form-control"></td>
+                    </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit" class="btn btn-success">Search</button></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+        {% if status %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Book Name</th>
+              <th scope="col">Author</th>
+              <th scope="col">Category</th>
+              <th scope="col">Price</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for i in search %}
+              <tr>
+                  <td>{{i[1]}}</td>
+                  <td>{{i[2]}}</td>
+                  <td>{{i[3]}}</td>
+                  <td>{{i[4]}}</td>
+                  <td>{{i[5]}}</td>
+                  <td><a href="/update">Click here</a></td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+    </div>
+{% endblock %}
